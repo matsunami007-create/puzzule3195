@@ -58,19 +58,15 @@ window.addEventListener('resize', resize); resize();
 const puzzle = {
   yaw: 0.72,
   pitch: -0.55,
-  cx: () => {
-    if (W < 700) return W * 0.52;
-    if (W < 980) return W * 0.58;
-    return Math.max(760, W * 0.62);
-  },
+  cx: () => W * 0.5,
   cy: () => {
-    if (W < 700) return H * 0.44;
-    return H * 0.56;
+    const uiH = W < 700 ? 220 : 205;
+    return uiH + (W < 700 ? 150 : 185);
   },
   scale: () => {
-    if (W < 700) return Math.min(W, H) * 0.19;
-    if (W < 980) return Math.min(W, H) * 0.22;
-    return Math.min(W, H) * 0.25;
+    if (W < 700) return Math.min(W, H) * 0.18;
+    if (W < 1100) return Math.min(W, H) * 0.20;
+    return Math.min(W, H) * 0.22;
   }
 };
 
@@ -349,7 +345,7 @@ function drawScene(){
   // tray title
   ctx.fillStyle = '#475569';
   ctx.font = '14px system-ui, sans-serif';
-  ctx.fillText('未配置ピース', 24, Math.max(H-190, 24));
+  ctx.fillText('未配置ピース', Math.max(24, W*0.08), W < 700 ? 690 : 650);
 
   // loose pieces
   pieces.filter(p=>!p.placed).forEach(p=>{

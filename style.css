@@ -93,7 +93,16 @@
 }
 
 
-/* v4: スマホで組み立て位置が画面内に入るよう調整 */
+/* v5: UI上・完成立体中央・未配置ピース下 の縦並び */
+.ui{
+  max-width: min(94vw, 560px);
+}
+@media (min-width: 701px){
+  .ui{
+    left: 24px;
+    top: 16px;
+  }
+}
 @media (max-width: 700px){
   .ui{
     max-width: calc(100vw - 20px);
