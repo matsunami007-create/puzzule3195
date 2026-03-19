@@ -1,0 +1,1 @@
+この修正版は index.html の二重 canvas 問題を直した GitHub/Jimdo 用です。既存ファイルを全部置き換えてください。

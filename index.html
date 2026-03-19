@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>立体パズル 最終完成版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="app"></canvas>
+
+<div class="ui">
+  <strong>立体パズル 最終完成版</strong>
+  空いている場所をドラッグ → 全体を回転<br>
+  未配置ピースの本体をドラッグ → 移動<br>
+  未配置ピース右上の小さな丸をドラッグ → そのピースだけ回転
+  <div class="row">
+    <button id="resetBtn">最初から</button>
+    <button id="mixBtn" class="alt">並べ直す</button>
+    <button id="openReviewBtn" class="alt">6面レビュー</button>
+    <button id="openCube3DBtn" class="alt">立体レビュー</button>
+  </div>
+  <div id="msg" style="margin-top:8px;">8個そろうと、隙間0で1つの立方体になります。完成後もドラッグで回転でき、さらに「立体レビュー」で6面を貼った立方体を確認できます。</div>
+</div>
+
+<div id="reviewOverlay" class="reviewOverlay">
+  <div class="reviewCard">
+    <div class="reviewHead">
+      <div>
+        <strong style="font-size:18px; display:block;">6面レビュー</strong>
+        8個そろったので、完成形の6面を平面で確認できます。
+      </div>
+      <div class="row">
+        <button id="closeReviewBtn" class="alt">組み立て画面に戻る</button>
+      </div>
+    </div>
+    <div class="reviewGrid">
+      <div class="faceCard"><strong>上面</strong><canvas id="face_top" width="320" height="320"></canvas></div>
+      <div class="faceCard"><strong>正面</strong><canvas id="face_front" width="320" height="320"></canvas></div>
+      <div class="faceCard"><strong>右面</strong><canvas id="face_right" width="320" height="320"></canvas></div>
+      <div class="faceCard"><strong>左面</strong><canvas id="face_left" width="320" height="320"></canvas></div>
+      <div class="faceCard"><strong>背面</strong><canvas id="face_back" width="320" height="320"></canvas></div>
+      <div class="faceCard"><strong>底面</strong><canvas id="face_bottom" width="320" height="320"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div id="cube3dOverlay" class="cube3dOverlay">
+  <div class="cube3dCard">
+    <div class="reviewHead">
+      <div>
+        <strong style="font-size:18px; display:block;">立体レビュー</strong>
+        6面レビューで正しい画像を、そのまま立体キューブに貼って確認できます。
+      </div>
+      <div class="row">
+        <button id="closeCube3DBtn" class="alt">閉じる</button>
+      </div>
+    </div>
+    <div id="cube3dStage" class="cube3dStage">
+      <div id="cube3dWrap" class="cube3dWrap">
+        <div id="cube3d" class="cube3d">
+          <div class="cubeFace top" id="cubeFace_top"></div>
+          <div class="cubeFace bottom" id="cubeFace_bottom"></div>
+          <div class="cubeFace front" id="cubeFace_front"></div>
+          <div class="cubeFace back" id="cubeFace_back"></div>
+          <div class="cubeFace right" id="cubeFace_right"></div>
+          <div class="cubeFace left" id="cubeFace_left"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cube3dHelp">
+      <div>自動でゆっくり回転します。ドラッグすると好きな向きで確認できます。</div>
+      <div><button id="toggleAutoSpinBtn" class="alt">自動回転を止める</button></div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
