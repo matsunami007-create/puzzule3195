@@ -91,3 +91,22 @@
     max-width: min(94vw, 500px);
   }
 }
+
+
+/* v4: スマホで組み立て位置が画面内に入るよう調整 */
+@media (max-width: 700px){
+  .ui{
+    max-width: calc(100vw - 20px);
+    left: 10px;
+    top: 10px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  .row{
+    gap: 6px;
+  }
+  button{
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}

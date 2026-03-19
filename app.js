@@ -58,9 +58,20 @@ window.addEventListener('resize', resize); resize();
 const puzzle = {
   yaw: 0.72,
   pitch: -0.55,
-  cx: () => Math.max(760, W*0.62),
-  cy: () => H*0.56,
-  scale: () => Math.min(W,H)*0.25
+  cx: () => {
+    if (W < 700) return W * 0.52;
+    if (W < 980) return W * 0.58;
+    return Math.max(760, W * 0.62);
+  },
+  cy: () => {
+    if (W < 700) return H * 0.44;
+    return H * 0.56;
+  },
+  scale: () => {
+    if (W < 700) return Math.min(W, H) * 0.19;
+    if (W < 980) return Math.min(W, H) * 0.22;
+    return Math.min(W, H) * 0.25;
+  }
 };
 
 const targetPositions = [];
